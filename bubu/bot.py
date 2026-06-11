@@ -7,7 +7,7 @@ from aiogram.filters import Command
 from aiohttp import web
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-BASE_WEBAPP_URL = "https://bubu-28lm.onrender.com/index.html"  # твой реальный URL
+BASE_WEBAPP_URL = "https://bubu-1.onrender.com/index.html"       # твой реальный URL
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
