@@ -1,16 +1,19 @@
 import asyncio
 import os
+from pathlib import Path
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import WebAppInfo, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.filters import Command
 from aiohttp import web
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-# Замени на свой URL после деплоя на Render (например, https://имя-сервиса.onrender.com)
-BASE_WEBAPP_URL = "https://ваш-сервис.onrender.com/index.html"
+BASE_WEBAPP_URL = "https://bubu-28lm.onrender.com/index.html"  # твой реальный URL
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
+
+# ---------- Указываем папку, где лежит этот скрипт ----------
+BASE_DIR = Path(__file__).parent.absolute()
 
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
@@ -25,15 +28,25 @@ async def cmd_start(message: types.Message):
         reply_markup=keyboard
     )
 
-# Веб-сервер для раздачи статики
+# Раздача статики с правильными путями
 async def handle_index(request):
-    return web.FileResponse('index.html')
+    index_path = BASE_DIR / 'index.html'
+    if index_path.exists():
+        return web.FileResponse(str(index_path))
+    return web.Response(text="index.html not found", status=404)
 
 async def handle_static(request):
     filename = request.match_info['filename']
-    # разрешаем только .html, .js, .css, .png, .jpg, .ico — для безопасности
-    if os.path.exists(filename) and os.path.isfile(filename):
-        return web.FileResponse(filename)
+    # Безопасность: не отдаём файлы вне BASE_DIR
+    requested_path = BASE_DIR / filename
+    # Проверяем, что путь не выходит за пределы BASE_DIR (защита от directory traversal)
+    try:
+        requested_path.resolve().relative_to(BASE_DIR.resolve())
+    except ValueError:
+        return web.Response(status=403, text="Forbidden")
+    
+    if requested_path.is_file():
+        return web.FileResponse(str(requested_path))
     return web.Response(status=404, text="Not found")
 
 async def run_web_server():
@@ -45,10 +58,11 @@ async def run_web_server():
     await runner.setup()
     site = web.TCPSite(runner, "0.0.0.0", 8080)
     await site.start()
-    print("✅ Web server started on port 8080")
+    print(f"✅ Web server started on port 8080, serving from {BASE_DIR}")
 
 async def main():
     await run_web_server()
+    await bot.delete_webhook(drop_pending_updates=True)  # сброс вебхука
     print("🤖 Bot is polling...")
     await dp.start_polling(bot)
 
