@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Word Master — advanced vocabulary</title>
+    <title>💖 бубу Word Master 💖</title>
     <style>
         * {
             box-sizing: border-box;
             user-select: none;
         }
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+            background: linear-gradient(145deg, #ffe4ec 0%, #ffd0df 100%);
+            font-family: 'Segoe UI', 'Quicksand', 'Poppins', system-ui, sans-serif;
             margin: 0;
             min-height: 100vh;
             padding: 20px;
@@ -22,12 +22,12 @@
         .game-container {
             max-width: 1400px;
             width: 100%;
-            background: rgba(255,255,245,0.1);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 240, 245, 0.85);
+            backdrop-filter: blur(4px);
             border-radius: 64px;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.2);
             padding: 20px 24px 32px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,200,0.2);
+            border: 2px solid #ffb7c5;
         }
         .game-header {
             display: flex;
@@ -38,17 +38,18 @@
             gap: 15px;
         }
         h1 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             margin: 0;
-            background: linear-gradient(120deg, #f9d56e, #f8a35e);
+            background: linear-gradient(135deg, #e8436e, #ff8fab);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            text-shadow: 0 2px 4px rgba(255,255,200,0.3);
         }
         .lang-switch {
             display: flex;
             gap: 10px;
-            background: #2c2c3a;
+            background: #ffeef4;
             padding: 5px 12px;
             border-radius: 60px;
         }
@@ -61,19 +62,21 @@
             border-radius: 40px;
             cursor: pointer;
             transition: 0.2s;
-            color: #ffd966;
+            color: #d44c6e;
         }
         .lang-btn.active {
-            background: #ffb347;
-            color: #1a1a2e;
+            background: #e8436e;
+            color: white;
+            box-shadow: 0 4px 10px #ff99bb;
         }
         .score-area {
-            background: #2c2c3a;
+            background: white;
             border-radius: 50px;
             padding: 8px 20px;
             font-weight: bold;
-            color: #f9d56e;
+            color: #e8436e;
             font-size: 1.3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         .categories {
             display: flex;
@@ -85,15 +88,15 @@
         .category {
             flex: 1;
             min-width: 170px;
-            background: rgba(30,30,45,0.9);
+            background: #fff0f5;
             border-radius: 48px;
             padding: 16px 12px;
-            border: 1px solid #ffb34755;
+            border: 2px solid #ffc0d0;
             transition: 0.1s;
         }
         .category.drag-over {
-            border: 3px solid #ffb347;
-            background: #3a3a55;
+            border: 3px solid #ff8fab;
+            background: #ffe0ec;
             transform: scale(0.98);
         }
         .category-title {
@@ -101,7 +104,7 @@
             font-weight: bold;
             text-align: center;
             margin-bottom: 16px;
-            color: #ffb347;
+            color: #e8436e;
         }
         .category-items {
             min-height: 130px;
@@ -112,19 +115,19 @@
             align-items: center;
         }
         .card-placed {
-            background: #4e4e6e;
+            background: #ffe0ec;
             border-radius: 40px;
             padding: 8px 18px;
             font-size: 0.85rem;
             font-weight: 500;
-            color: #ffecb3;
+            color: #aa4a6e;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            word-break: break-word;
+            box-shadow: inset 0 1px 3px #fff9, 0 2px 4px #ffb7c5;
         }
         .cards-pool {
-            background: rgba(0,0,0,0.3);
+            background: #fff5f8;
             border-radius: 48px;
             padding: 20px;
             margin: 20px 0;
@@ -134,7 +137,7 @@
             font-weight: 600;
             margin-bottom: 20px;
             padding-left: 12px;
-            color: #ffd966;
+            color: #e8436e;
         }
         .cards-wrapper {
             display: flex;
@@ -143,25 +146,26 @@
             justify-content: center;
         }
         .card {
-            background: #2d2d44;
+            background: white;
             border-radius: 42px;
             padding: 12px 24px;
             min-width: 140px;
             text-align: center;
             font-size: 1rem;
             font-weight: bold;
-            color: #ffecb3;
+            color: #b84c6e;
             cursor: grab;
-            border: 1px solid #ffb34780;
+            border: 2px solid #ffb7c5;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
+            box-shadow: 0 10px 15px -5px #ffb7c5;
         }
         .card:active { cursor: grabbing; }
         .card.dragging { opacity: 0.4; cursor: grabbing; }
         .info-btn {
-            background: #ffb34755;
+            background: #ffd9e6;
             border-radius: 50%;
             width: 26px;
             height: 26px;
@@ -171,37 +175,37 @@
             font-size: 0.8rem;
             font-weight: bold;
             cursor: pointer;
-            color: #fff;
+            color: #e8436e;
             border: none;
         }
-        .info-btn:hover { background: #ffb347; color: #1a1a2e; }
+        .info-btn:hover { background: #e8436e; color: white; }
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(232,67,110,0.4);
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
         }
         .modal-card {
-            background: #2d2d44;
+            background: #fff5f8;
             border-radius: 56px;
             max-width: 400px;
             width: 85%;
             padding: 28px 24px;
             text-align: center;
-            border: 1px solid #ffb347;
+            border: 3px solid #ffb7c5;
         }
-        .modal-word { font-size: 2rem; font-weight: bold; color: #ffb347; margin-bottom: 12px; }
-        .modal-translation { font-size: 1.3rem; margin: 15px 0; background: #1e1e30; padding: 12px; border-radius: 50px; }
-        .modal-example { font-style: italic; padding: 12px; background: #232336; border-radius: 32px; margin: 15px 0; color: #ddd; }
+        .modal-word { font-size: 2rem; font-weight: bold; color: #e8436e; margin-bottom: 12px; }
+        .modal-translation { font-size: 1.3rem; margin: 15px 0; background: #ffeef4; padding: 12px; border-radius: 50px; }
+        .modal-example { font-style: italic; padding: 12px; background: #ffeef4; border-radius: 32px; margin: 15px 0; color: #aa4a6e; }
         .close-modal {
-            background: #ffb347;
+            background: #e8436e;
             border: none;
-            color: #1a1a2e;
+            color: white;
             padding: 10px 20px;
             border-radius: 40px;
             font-size: 1rem;
@@ -210,11 +214,11 @@
         }
         .reset-btn {
             background: none;
-            border: 1px solid #ffb347;
+            border: 2px solid #ff99bb;
             padding: 8px 20px;
             border-radius: 40px;
             font-weight: bold;
-            color: #ffb347;
+            color: #e8436e;
             cursor: pointer;
         }
         .footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
@@ -227,7 +231,7 @@
 <body>
 <div class="game-container" id="gameApp">
     <div class="game-header">
-        <h1 data-i18n="title">📖 Word Master</h1>
+        <h1 data-i18n="title">💖 бубу Word Master 💖</h1>
         <div class="lang-switch">
             <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
             <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
@@ -236,12 +240,12 @@
     </div>
     <div class="categories" id="categoriesContainer"></div>
     <div class="cards-pool">
-        <div class="pool-title" data-i18n="poolTitle">🔥 Advanced words to sort</div>
+        <div class="pool-title" data-i18n="poolTitle">✨✨ сложные слова, но ты справишься ✨✨</div>
         <div class="cards-wrapper" id="cardsPool"></div>
     </div>
     <div class="footer">
-        <button class="reset-btn" id="resetGameBtn" data-i18n="reset">⟳ New set</button>
-        <span style="font-size:0.75rem;">💡 Drag / tap → category</span>
+        <button class="reset-btn" id="resetGameBtn" data-i18n="reset">🔄 новый набор 💕</button>
+        <span style="font-size:0.75rem;">💗 перетащи или нажми → категория</span>
     </div>
 </div>
 <div id="infoModal" class="modal">
@@ -249,45 +253,39 @@
         <div class="modal-word" id="modalWord"></div>
         <div class="modal-translation" id="modalTranslation"></div>
         <div class="modal-example" id="modalExample"></div>
-        <button class="close-modal" id="closeModalBtn">OK</button>
+        <button class="close-modal" id="closeModalBtn">💗 понял(а), бубу</button>
     </div>
 </div>
 
 <script>
-    // ----------------------------------------------
-    // MEGA VOCABULARY BANK (50+ сложных слов)
+    // --------------------------------------------------------------
+    // БОЛЬШАЯ БАЗА СЛОВ (сложные + милота)
     const MASTER_WORDS = [
-        { word: "ubiquitous", category: "tech", translation_ru: "вездесущий", example_ru: "Смартфоны стали вездесущими в повседневной жизни.", example_en: "Smartphones have become ubiquitous in daily life." },
-        { word: "mitigate", category: "env", translation_ru: "смягчать", example_ru: "Правительства пытаются смягчить последствия изменения климата.", example_en: "Governments try to mitigate the effects of climate change." },
-        { word: "leverage", category: "business", translation_ru: "использовать (в своих интересах)", example_ru: "Мы можем использовать наши ресурсы для роста.", example_en: "We can leverage our resources for growth." },
-        { word: "cognitive", category: "psych", translation_ru: "когнитивный", example_ru: "Когнитивные способности ухудшаются с возрастом.", example_en: "Cognitive abilities decline with age." },
-        { word: "sustainable", category: "env", translation_ru: "устойчивый", example_ru: "Нам нужны устойчивые источники энергии.", example_en: "We need sustainable energy sources." },
-        { word: "paradigm", category: "business", translation_ru: "парадигма", example_ru: "Это смена парадигмы в технологии.", example_en: "This is a paradigm shift in technology." },
-        { word: "neural", category: "tech", translation_ru: "нейронный", example_ru: "Нейронные сети меняют ИИ.", example_en: "Neural networks are transforming AI." },
-        { word: "bias", category: "psych", translation_ru: "предвзятость", example_ru: "Когнитивные искажения влияют на решения.", example_en: "Cognitive biases affect decisions." },
-        { word: "disruptive", category: "business", translation_ru: "разрушительный (инновационный)", example_ru: "Стартапы часто создают разрушительные технологии.", example_en: "Startups often create disruptive technologies." },
-        { word: "resilience", category: "psych", translation_ru: "устойчивость (к стрессу)", example_ru: "Психологическая устойчивость помогает преодолевать трудности.", example_en: "Psychological resilience helps overcome adversity." },
-        { word: "algorithm", category: "tech", translation_ru: "алгоритм", example_ru: "Социальные сети используют алгоритмы для рекомендаций.", example_en: "Social media use algorithms for recommendations." },
-        { word: "liability", category: "law", translation_ru: "ответственность", example_ru: "Компания отрицает ответственность за ущерб.", example_en: "The company denies liability for the damage." },
-        { word: "jurisdiction", category: "law", translation_ru: "юрисдикция", example_ru: "Это дело находится вне нашей юрисдикции.", example_en: "This case is outside our jurisdiction." },
-        { word: "plaintiff", category: "law", translation_ru: "истец", example_ru: "Истец требует компенсацию.", example_en: "The plaintiff seeks compensation." },
-        { word: "due diligence", category: "business", translation_ru: "должная осмотрительность", example_ru: "Перед сделкой мы провели комплексную проверку.", example_en: "We performed due diligence before the deal." },
-        { word: "neuroplasticity", category: "psych", translation_ru: "нейропластичность", example_ru: "Мозг сохраняет нейропластичность всю жизнь.", example_en: "The brain retains neuroplasticity throughout life." },
-        { word: "quantum", category: "tech", translation_ru: "квантовый", example_ru: "Квантовые компьютеры решают задачи быстрее.", example_en: "Quantum computers solve problems faster." },
-        { word: "carbon footprint", category: "env", translation_ru: "углеродный след", example_ru: "Мы должны уменьшить углеродный след.", example_en: "We must reduce our carbon footprint." },
-        { word: "circular economy", category: "env", translation_ru: "циркулярная экономика", example_ru: "Циркулярная экономика минимизирует отходы.", example_en: "Circular economy minimizes waste." },
-        { word: "incentive", category: "business", translation_ru: "стимул", example_ru: "Бонусы служат стимулом для сотрудников.", example_en: "Bonuses are an incentive for employees." },
-        { word: "heuristic", category: "psych", translation_ru: "эвристика", example_ru: "Эвристика упрощает принятие решений.", example_en: "Heuristics simplify decision-making." },
-        { word: "blockchain", category: "tech", translation_ru: "блокчейн", example_ru: "Блокчейн обеспечивает прозрачность транзакций.", example_en: "Blockchain ensures transaction transparency." },
-        { word: "tort", category: "law", translation_ru: "деликт", example_ru: "Гражданско-правовой деликт наносит ущерб.", example_en: "A civil tort causes harm." },
-        { word: "fiduciary", category: "law", translation_ru: "фидуциарный (доверительный)", example_ru: "У директоров есть фидуциарные обязанности.", example_en: "Directors have fiduciary duties." },
-        { word: "dissonance", category: "psych", translation_ru: "диссонанс", example_ru: "Когнитивный диссонанс вызывает дискомфорт.", example_en: "Cognitive dissonance causes discomfort." },
-        { word: "asymmetric", category: "business", translation_ru: "асимметричный", example_ru: "Асимметричная информация вредит рынку.", example_en: "Asymmetric information harms the market." },
-        { word: "encryption", category: "tech", translation_ru: "шифрование", example_ru: "Сквозное шифрование защищает данные.", example_en: "End-to-end encryption protects data." },
-        { word: "anthropogenic", category: "env", translation_ru: "антропогенный", example_ru: "Антропогенное воздействие ведет к потеплению.", example_en: "Anthropogenic impact leads to warming." }
+        { word: "ubiquitous", category: "tech", translation_ru: "вездесущий", example_ru: "Смартфоны вездесущи, как любовь бубу ❤️", example_en: "Smartphones are ubiquitous, like bubu's love ❤️" },
+        { word: "mitigate", category: "env", translation_ru: "смягчать", example_ru: "Бубу смягчает любую ошибку и даёт второй шанс 💕", example_en: "Bubu mitigates any mistake and gives a second chance 💕" },
+        { word: "leverage", category: "business", translation_ru: "использовать", example_ru: "Бубу использует свои уми-способности на полную 🥰", example_en: "Bubu leverages its cuteness to the max 🥰" },
+        { word: "cognitive", category: "psych", translation_ru: "когнитивный", example_ru: "Твои когнитивные способности — умииии! 🧠💖", example_en: "Your cognitive skills are sooo cute! 🧠💖" },
+        { word: "sustainable", category: "env", translation_ru: "устойчивый", example_ru: "Бубу хочет устойчивого будущего с обнимашками 🌍🤗", example_en: "Bubu wants a sustainable future with hugs 🌍🤗" },
+        { word: "paradigm", category: "business", translation_ru: "парадигма", example_ru: "Ты меняешь парадигму — бубу ты умиииии!!!!!", example_en: "You change the paradigm — bubu you're sooo cute!!!!!" },
+        { word: "neural", category: "tech", translation_ru: "нейронный", example_ru: "Твои нейронные сети работают на 💯 с бубу", example_en: "Your neural networks work at 💯 with bubu" },
+        { word: "bias", category: "psych", translation_ru: "предвзятость", example_ru: "Никакой предвзятости, только сердечки 💗", example_en: "No bias, only hearts 💗" },
+        { word: "disruptive", category: "business", translation_ru: "разрушительный", example_ru: "Твоя уми-сила разрушает скуку! 🚀💕", example_en: "Your cute power disrupts boredom! 🚀💕" },
+        { word: "resilience", category: "psych", translation_ru: "устойчивость", example_ru: "Бубу обладает устойчивостью к грусти 🌈", example_en: "Bubu has resilience to sadness 🌈" },
+        { word: "algorithm", category: "tech", translation_ru: "алгоритм", example_ru: "Алгоритм счастья: бубу + ты = ❤️❤️❤️", example_en: "Happiness algorithm: bubu + you = ❤️❤️❤️" },
+        { word: "liability", category: "law", translation_ru: "ответственность", example_ru: "Бубу берёт ответственность за твою улыбку 😊", example_en: "Bubu takes liability for your smile 😊" },
+        { word: "jurisdiction", category: "law", translation_ru: "юрисдикция", example_ru: "Это дело под юрисдикцией сердечек 💖", example_en: "This case is under the jurisdiction of hearts 💖" },
+        { word: "plaintiff", category: "law", translation_ru: "истец", example_ru: "Истец требует бесконечных обнимашек 🤗", example_en: "The plaintiff demands endless hugs 🤗" },
+        { word: "due diligence", category: "business", translation_ru: "должная осмотрительность", example_ru: "Бубу проявляет должную осмотрительность в любви 🕵️‍♀️💕", example_en: "Bubu shows due diligence in love 🕵️‍♀️💕" },
+        { word: "neuroplasticity", category: "psych", translation_ru: "нейропластичность", example_ru: "Твоя нейропластичность учится быть ещё милее 🧠💕", example_en: "Your neuroplasticity learns to be even cuter 🧠💕" },
+        { word: "quantum", category: "tech", translation_ru: "квантовый", example_ru: "Квантовый скачок счастья, когда ты рядом 💫", example_en: "Quantum leap of happiness when you're near 💫" },
+        { word: "carbon footprint", category: "env", translation_ru: "углеродный след", example_ru: "Бубу уменьшает углеродный след любовью 🌱💚", example_en: "Bubu reduces carbon footprint with love 🌱💚" },
+        { word: "circular economy", category: "env", translation_ru: "циркулярная экономика", example_ru: "Циркулярная экономика сердечек — бесконечная нежность ♻️❤️", example_en: "Circular economy of hearts — endless tenderness ♻️❤️" },
+        { word: "incentive", category: "business", translation_ru: "стимул", example_ru: "Твоя улыбка — лучший стимул для бубу 🌟", example_en: "Your smile is the best incentive for bubu 🌟" },
+        { word: "heuristic", category: "psych", translation_ru: "эвристика", example_ru: "Эвристика бубу: если грустно → обнимашки 💕", example_en: "Bubu's heuristic: if sad → hugs 💕" },
+        { word: "blockchain", category: "tech", translation_ru: "блокчейн", example_ru: "Блокчейн наших сердец нерушим 🔗❤️", example_en: "The blockchain of our hearts is unbreakable 🔗❤️" },
+        { word: "tort", category: "law", translation_ru: "деликт", example_ru: "Деликт — это когда забыли поцеловать бубу 😘💔", example_en: "Tort is when you forgot to kiss bubu 😘💔" }
     ];
 
-    // Категории (ID + заголовки)
     const CATEGORIES = [
         { id: "business", title_en: "💼 Business", title_ru: "💼 Бизнес" },
         { id: "psych", title_en: "🧠 Psychology", title_ru: "🧠 Психология" },
@@ -296,18 +294,16 @@
         { id: "law", title_en: "⚖️ Law", title_ru: "⚖️ Право" }
     ];
 
-    // i18n интерфейса
     const I18N = {
-        en: { title: "📖 Word Master", poolTitle: "🔥 Advanced words to sort", reset: "⟳ New set" },
-        ru: { title: "📖 Мастер слов", poolTitle: "🔥 Сложные слова", reset: "⟳ Новый набор" }
+        en: { title: "💖 bubu Word Master 💖", poolTitle: "✨✨ hard words, but you got this ✨✨", reset: "🔄 new set 💕" },
+        ru: { title: "💖 бубу Word Master 💖", poolTitle: "✨✨ сложные слова, но ты справишься ✨✨", reset: "🔄 новый набор 💕" }
     };
 
     let currentLang = "en";
     let score = 0;
     let gameWords = [];        // { wordData, categoryId, placed, placedInCategory }
-    let currentWordBank = [];  // случайно выбранные слова
+    let currentWordBank = [];
 
-    // --- helpers ---
     function shuffleArray(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -329,16 +325,15 @@
             placed: false,
             placedInCategory: null
         }));
-        shuffleArray(gameWords);  // перемешаем для старта
+        shuffleArray(gameWords);
     }
 
     function saveGame() {
-        const toSave = { score, gameWords, currentWordBank };
-        localStorage.setItem("wordSortAdvanced", JSON.stringify(toSave));
+        localStorage.setItem("wordSortBubu", JSON.stringify({ score, gameWords, currentWordBank }));
     }
 
     function loadGame() {
-        const saved = localStorage.getItem("wordSortAdvanced");
+        const saved = localStorage.getItem("wordSortBubu");
         if (saved) {
             try {
                 const data = JSON.parse(saved);
@@ -346,13 +341,9 @@
                 if (data.gameWords && data.currentWordBank) {
                     gameWords = data.gameWords;
                     currentWordBank = data.currentWordBank;
-                } else {
-                    initGameWords();
-                }
+                } else initGameWords();
             } catch(e) { initGameWords(); }
-        } else {
-            initGameWords();
-        }
+        } else initGameWords();
         updateScoreUI();
         render();
     }
@@ -361,20 +352,33 @@
         document.getElementById("scoreValue").innerText = score;
     }
 
+    // ❤️ Успешное размещение
     function placeWord(wordIndex, targetCategoryId) {
         const wordItem = gameWords[wordIndex];
         if (wordItem.placed) return false;
         if (wordItem.wordData.category !== targetCategoryId) {
-            showTemporaryMessage("❌ Wrong category!", 1000);
+            // 🎀 МИЛАЯ ОШИБКА с предложением попробовать другую категорию
+            const randomHearts = "❤️💕💗💖".split('');
+            const hearts = randomHearts.slice(0,3).join('');
+            showTemporaryMessage(`💔 буууууу ты ооочень уми, а игра сломалась? дай еще шанс! попробуй в другую категорию ${hearts}`, 3500);
             return false;
         }
+        // Успех
         wordItem.placed = true;
         wordItem.placedInCategory = targetCategoryId;
         score += 10;
         updateScoreUI();
         saveGame();
         render();
-        showTemporaryMessage("✅ +10 points!", 700);
+        const successMessages = [
+            "🎉 бубу ты умиииии!!!!! +10 ❤️",
+            "💖 ура! бубу гордится тобой! +10 💖",
+            "🥰 правильно! ты просто умница! +10 🥰",
+            "🌸 бубу обнимает! +10 🌸",
+            "💗 идеально! еще один шаг к победе! +10 💗"
+        ];
+        const randomMsg = successMessages[Math.floor(Math.random() * successMessages.length)];
+        showTemporaryMessage(randomMsg, 1500);
         return true;
     }
 
@@ -384,7 +388,7 @@
         updateScoreUI();
         saveGame();
         render();
-        showTemporaryMessage("🔄 New word set! Good luck!", 1200);
+        showTemporaryMessage("✨ новый набор слов! удачи, бубу тебя любит ✨", 2000);
     }
 
     let msgTimeout = null;
@@ -397,12 +401,16 @@
             msgDiv.style.bottom = "30px";
             msgDiv.style.left = "50%";
             msgDiv.style.transform = "translateX(-50%)";
-            msgDiv.style.backgroundColor = "#ffb347";
-            msgDiv.style.color = "#1a1a2e";
-            msgDiv.style.padding = "10px 24px";
+            msgDiv.style.backgroundColor = "#e8436e";
+            msgDiv.style.color = "white";
+            msgDiv.style.padding = "14px 28px";
             msgDiv.style.borderRadius = "60px";
             msgDiv.style.fontWeight = "bold";
             msgDiv.style.zIndex = "999";
+            msgDiv.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
+            msgDiv.style.fontSize = "1rem";
+            msgDiv.style.textAlign = "center";
+            msgDiv.style.maxWidth = "80%";
             document.body.appendChild(msgDiv);
         }
         if (msgTimeout) clearTimeout(msgTimeout);
@@ -428,7 +436,6 @@
         document.getElementById("infoModal").style.display = "none";
     }
 
-    // Drag & drop + tap-to-select
     function setupDragAndDrop() {
         const categoriesEl = document.querySelectorAll(".category");
         categoriesEl.forEach(cat => {
@@ -439,21 +446,19 @@
                 cat.classList.remove("drag-over");
                 const wordIdx = e.dataTransfer.getData("text/plain");
                 if (wordIdx && !isNaN(parseInt(wordIdx))) {
-                    const categoryId = cat.getAttribute("data-cat-id");
-                    placeWord(parseInt(wordIdx), categoryId);
+                    placeWord(parseInt(wordIdx), cat.getAttribute("data-cat-id"));
                 }
             });
         });
         const cards = document.querySelectorAll(".card[draggable='true']");
         cards.forEach(card => {
             card.addEventListener("dragstart", (e) => {
-                const idx = card.getAttribute("data-idx");
-                e.dataTransfer.setData("text/plain", idx);
                 card.classList.add("dragging");
+                e.dataTransfer.setData("text/plain", card.getAttribute("data-idx"));
             });
             card.addEventListener("dragend", (e) => card.classList.remove("dragging"));
         });
-        // touch / tap fallback
+        // tap fallback
         let selectedCardIdx = null;
         document.querySelectorAll(".card").forEach(card => {
             card.addEventListener("click", (e) => {
@@ -461,15 +466,14 @@
                 const idx = card.getAttribute("data-idx");
                 if (idx && !card.closest(".category-items")) {
                     selectedCardIdx = parseInt(idx);
-                    showTemporaryMessage(`👉 Tap on a category to place "${gameWords[selectedCardIdx]?.wordData.word}"`, 1500);
+                    showTemporaryMessage(`👉 нажми на категорию для слова "${gameWords[selectedCardIdx]?.wordData.word}"`, 1500);
                 }
             });
         });
         document.querySelectorAll(".category").forEach(cat => {
             cat.addEventListener("click", (e) => {
                 if (selectedCardIdx !== null && !isNaN(selectedCardIdx)) {
-                    const catId = cat.getAttribute("data-cat-id");
-                    placeWord(selectedCardIdx, catId);
+                    placeWord(selectedCardIdx, cat.getAttribute("data-cat-id"));
                     selectedCardIdx = null;
                 }
             });
@@ -487,8 +491,8 @@
     }
     function handleInfoClick(e) {
         e.stopPropagation();
-        const wordDataRaw = e.currentTarget.getAttribute("data-word");
-        if (wordDataRaw) showWordInfo(JSON.parse(wordDataRaw));
+        const raw = e.currentTarget.getAttribute("data-word");
+        if (raw) showWordInfo(JSON.parse(raw));
     }
 
     function render() {
@@ -506,10 +510,10 @@
             itemsDiv.className = "category-items";
             const placedHere = gameWords.filter(w => w.placed && w.placedInCategory === cat.id);
             placedHere.forEach(w => {
-                const placedSpan = document.createElement("div");
-                placedSpan.className = "card-placed";
-                placedSpan.innerHTML = `${w.wordData.word} <button class="info-btn" data-word='${JSON.stringify(w.wordData)}'>ⓘ</button>`;
-                itemsDiv.appendChild(placedSpan);
+                const span = document.createElement("div");
+                span.className = "card-placed";
+                span.innerHTML = `${w.wordData.word} <button class="info-btn" data-word='${JSON.stringify(w.wordData)}'>ⓘ</button>`;
+                itemsDiv.appendChild(span);
             });
             catDiv.appendChild(title);
             catDiv.appendChild(itemsDiv);
@@ -517,7 +521,7 @@
         });
         cardsPool.innerHTML = "";
         const unplaced = gameWords.filter(w => !w.placed);
-        unplaced.forEach((w, idx) => {
+        unplaced.forEach(w => {
             const originalIndex = gameWords.findIndex(gw => gw === w);
             const cardDiv = document.createElement("div");
             cardDiv.className = "card";
